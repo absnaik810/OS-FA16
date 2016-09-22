@@ -80,4 +80,7 @@ extern 	shellcmd xsh_hello	(int32,	char *[]);
 extern  shellcmd xsh_mmu	(int32, char *[]);
 
 /* in file xsh_hello.c */
-extern  shellcmd xsh_hello	(int, char *[]);
+extern  shellcmd xsh_hello	(int32, char *[]);
+
+/* in file xsh_prodcons.c */
+extern  shellcmd xsh_prodcons	(int32, char*[]);
