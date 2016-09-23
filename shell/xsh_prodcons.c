@@ -20,11 +20,16 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 		{
 			count=atoi(args[1]);
 			if(count==0)		//atoi() failed; which means input was not an integer; so default count=2000;
-				count=2000;
+				if(strcmp(args[1],"--help")==0)
+				{
+					printf("Type the command prodcons followed by an integer value for count; if string is entered then default value of count will be 2000\n");
+				}
+				else
+					count=2000;
 		}
 		else
 		{
-			printf("Too many arguments.  Exiting...\n");
+			fprintf(stderr, "%s: Too many arguments.  Exiting...\n", args[0]);
 			return 0;
 		}
 
