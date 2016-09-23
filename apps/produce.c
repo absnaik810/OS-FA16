@@ -12,6 +12,7 @@ void producer(int count)
 	int32 i;
 
 	//producing values less than 'count', as 'i' starts from '0'
+	//the for loop runs 'count' number of times
 	for(i=0; i<count; i++)
 	{
 		//assigning the produced value to global variable 'n'

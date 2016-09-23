@@ -12,6 +12,8 @@ void consumer(int count)
 {
 	int32 i;
 
+	//for loop to print the consumed value i.e., n
+	//this loop again runs 'count' number of times
 	for(i=0; i<count; i++)
 	{
 		printf("consumed : %d\n", n);

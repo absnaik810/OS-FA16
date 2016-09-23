@@ -1,5 +1,5 @@
-/* consumer - prototype for the consumer() function
- * producer - prototype for the producer() function
+/* consumer() - prototype for the consumer() function
+ * producer() - prototype for the producer() function
  */
 
 extern int n;			//Declaration of the global variable

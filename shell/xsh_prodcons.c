@@ -3,7 +3,7 @@
 #include<xinu.h>
 #include<prodcons.h>
 
-int n;		//Global variable n
+int n;		//Definition of the global variable n
 
 /*------------------------------------------------------------------------
  * xsh_prodcons - creates two processes, the producer and the consumer
