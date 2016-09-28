@@ -16,7 +16,9 @@ void consumer(int count)
 	//this loop again runs 'count' number of times
 	for(i=0; i<count; i++)
 	{
+		wait(produced);
 		printf("consumed : %d\n", n);
+		signal(consumed);
 	}
 }
 

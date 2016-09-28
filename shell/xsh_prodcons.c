@@ -3,7 +3,9 @@
 #include<xinu.h>
 #include<prodcons.h>
 
-int n;		//Definition of the global variable n
+sid32 produced;
+sid32 consumed;
+int n;
 
 /*------------------------------------------------------------------------
  * xsh_prodcons - creates two processes, the producer and the consumer
@@ -33,8 +35,11 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 			return 0;
 		}
 
-	resume(create(producer, 1024, 20, "producer", 1, count));
+	consumed = semcreate(1);
+	produced = semcreate(0);
+
 	resume(create(consumer, 1024, 20, "consumer", 1, count));
+	resume(create(producer, 1024, 20, "producer", 1, count));
 
 	return 0;
 }

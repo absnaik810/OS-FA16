@@ -13,12 +13,15 @@ void producer(int count)
 
 	//producing values less than 'count', as 'i' starts from '0'
 	//the for loop runs 'count' number of times
+
 	for(i=0; i<count; i++)
 	{
+		wait(consumed);
 		//assigning the produced value to global variable 'n'
 		n=i;
 		//printing the produced value; commented as not actually required in the producer
 		//printf("produced : %d\n",n);
+		signal(produced);
 	}
 }
 

@@ -1,0 +1,62 @@
+
+Question 1: How exactly is synchronization achieved using semaphore in our assignment?
+Answer:
+	In our assignment, we have created 2 semaphores, Produced and Consumed.  The semcreate() call creates these two semaphores dynamically.  They take the initial value given to them as the argument and in turn return an integer by which they can be identified.
+	
+	The semaphore Produced has been created with the initial value of 0, while the other one - Consumed - has been created with the initial value of 1.  Since the semaphore Consumed has a value of 1, a wait() call on Consumed will not block the process for the first time, because a process is only blocked when the value of the semaphore becomes negative.  Thus, it is free to run.  The semaphore Produced has a value of 0.  So, the first call to Produced makes the calling process wait.  The producer is thus waiting for the consumer before incrementing the value of the global variable n.  Hence, this methodology causes the producer and consumer to run alternately and generate the output as 1, 2, ...
+	
+	As the Consumed semaphore has value 1, even after the producer calls a wait on Consumed, it still executes and increments the value of n.  If the consumer had run first before the producer, then it would have called a wait on the semaphore Produced which would result in blockage of the calling consumer process.  Now the producer process has already increased the value of n.  It further executes the signal method on the Produced semaphore which resumes the blocked consumer process and prints the value of n.
+	
+Question 2: Can the above sychronization be achieved with just one semphore? Why or why not?
+Answer:
+	Can the above sychronization be achieved with just one semphore? Why or why not ?
+
+	No, the above sychronization cannot be implemented using a single semphore because there are 2 processes namely producer, which produces the value for the shared variable n and consumer which prints the value of the variable n.  These 2 processes have their own critical section which is to be executed and therfore requires 2 separate locks which is semaphore in our case so that the value of the shared variable n could be properly produced and consumed in synchronization by these 2 procesess.
+
+	However if these 2 processes access a shared critical section then it can be implemented using a single semaphore.
+
+Question 3: Write down all the functions in the project.
+Answer:
+	1.	Create():  
+		Function Prototype:  int create(caddr, ssize, prio, name, nargs[,argument]*)
+		
+		This function creates a new process which will begin execution at the memory address caddr, The stack allocated is of ssize bytes and the initial priority of the process will be prio.  The process would be identified by the name name.  Also, nargs here is the number of arguments that can be passed to the create() function.  Also, this is followed by the optional actual arguments, as indicated in the function prototype above.  And the return type is int.
+	
+	2.	Resume():
+		Function Prototype: int resume(pid)
+
+		Resume takes a process pid out of sleep and resumes it by making it ready and puts them in the ready queue.  Also, the return type of this function is int.
+
+	3.	Produce():
+		Function Prototype: void produce(int count)
+
+		This function takes the value of count as an argument, and generates count values.  These produced values are then assigned to the global variable n.
+
+	4.	Consume():
+		Function Prototype: void consume(int count)
+	
+		This function takes the value of count as an argument, and consumes the values that the producer has produced.  It in turn, prints out (I.e., consumes) the values of the global variable n.
+		
+	5.  Semcreate():
+		Function Prototype: static semaphore semcreate(int count)
+		
+		The semcreate() call creates semaphores dynamically.  They take the initial value given to them as the argument and in turn return an integer by which they can be identified.
+		
+	6.  Wait():
+		Function Prototype: syscall wait(semaphore)
+		
+		Makes the current process wait on a semaphore
+		
+	7.  Signal():
+		Function Prototype: syscall signal(semaphore)
+		
+		This is used to release a waiting thread.
+		
+Question 4:  Note the tasks of the group members who developed the various components.
+Answer:
+	Sagar and I worked together as a group to create the shell command, coded xsh_prodcons.c  along with its error handling functionality as well as created the prodcons.h header file which was used to declare the global variable n, semaphore declaration and the producer and consumer methods.  Then, Sagar coded the logic for the produce.c file, while I did it for the consume.c file.  Answers above were written together post discussion.  
+
+	References: 	
+
+	1. http://www.dmi.unict.it/~pappalar/lab3/xinuman2.pdf
+	2. http://xinu.mscs.mu.edu/docs/semcreate_8c.html
