@@ -8,7 +8,7 @@
 #define FUTURE_VALID 	  2         
 
 /* modes of operation for future*/
-#define FUTURE_EXCLUSIVE  1	
+#define FUTURE_EXCLUSIVE  1
 
 typedef struct futent
 {

@@ -1,3 +1,4 @@
+/* Used for freeing */
 #include<future.h>
 #include<xinu.h>
 

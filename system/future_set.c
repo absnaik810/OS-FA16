@@ -1,3 +1,5 @@
+/* Used for implementing the future_set() function */
+
 #include<future.h>
 #include<xinu.h>
 

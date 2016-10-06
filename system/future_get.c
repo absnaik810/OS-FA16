@@ -1,3 +1,5 @@
+/* Used for implementing the future_get() function*/
+
 #include<future.h>
 #include<xinu.h>
 

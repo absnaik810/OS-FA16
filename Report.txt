@@ -1,3 +1,5 @@
+Team members: Abhishek Naik and Sagar Vora
+
 Abhishek Naik:
 Developed future_alloc.c, future_free.c, future_get.c and future_set.c
 
