@@ -1,0 +1,7 @@
+Abhishek Naik:
+Developed future_alloc.c, future_free.c, future_get.c and future_set.c
+
+Sagar Vora:
+Developed future_cons.c, future_prod.c, future.h and xsh_prodcons.c
+
+Logic and understanding was developed by working together.
