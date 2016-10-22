@@ -15,5 +15,14 @@ syscall future_get(future* fut, int* value) {
 		if(fut->state==FUTURE_WAITING) {
 			return SYSERR;
 		}
+		else
+			{
+			if(fut->state==FUTURE_VALID) {
+				*value=*(fut->value);
+				resume(fut->pid);
+				fut->state=FUTURE_EMPTY;
+				return OK;
+			}
+		}
 	}
 }	
