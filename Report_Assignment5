@@ -1,0 +1,15 @@
+Assignment 5 - Report
+
+	In this assignment, we have implemented the FUTURE_SHARED and FUTURE_QUEUE modes of operation of the futures.  We have also implemented a queue to hold the waiting processes.  In case of FUTURE_SHARED, there is a one-to-many relationship between the various processes, whereas in case of FUTURE_QUEUE, there is a many-to-many relationship between them.  Also, we are using the future_alloc() method to allocate the future in different modes.  The FUTURE_EXCLUSIVE mode that was implemented as a part of Assignment 4 remains the same.
+	
+	FUTURE_SHARED:  Now, in this mode, many threads can call future_get(); while just a single one can call future_set().  All the threads waiting to get a value should be waiting in the get_queue that is associated with the future.  When the value of a future is set, all the threads present in get_queue should be freed.
+	
+	FUTURE_QUEUE:  In case of case 1, if the producer thread calls future_set, and if there are threads currently waiting in the get_queue, then the producer thread that called the future_set sets the value of the future and resumes only one thread from the waiting queue based on FCFS.  Now, if there is no thread waiting in the get_queue, then the producer thread that called future_set gets enqueued itself and thereby gets suspended.  
+	
+	In case 2, suppose the consumer thread calls future_get and if there are threads currently waiting in the set_queue, then the consumer thread releases one thread from the set_queue based on FCFS.  Also, it should get the value that was set by the producer process.  If there is no producer thread currently waiting in the set_queue to set the value, then the consumer process itself should get enqueued in the get_queue and thereby get suspended.
+	
+	We have implemented a queue that works on the First Come, First Serve basis.  Initially, we check
+	
+Functionality of each group member:
+
+Abhishek and Sagar both worked in a group to develop the logical understanding and working.  I worked on the code for FUTURE_SHARED while Sagar worked on the code for FUTURE_QUEUE.  We helped each other in case one got stuck.  This helped us get a good knowledge about the way things work. 

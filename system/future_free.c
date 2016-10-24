@@ -1,12 +1,13 @@
-/* Used for freeing */
-#include<future.h>
-#include<xinu.h>
+#include <xinu.h>
+#include <future.h>
 
-syscall future_free (future* fut) {
-	syscall status;
+syscall	future_free(future *fut) {
+	intmask mask;
+	mask = disable();
+	freemem(fut, sizeof(future));
+	freemem(fut, sizeof(fut->get_queue));
+	freemem(fut, sizeof(fut->set_queue));
 	
-	if(fut->flag==FUTURE_EXCLUSIVE)
-		status=freemem((char*) fut, sizeof(*fut));
-
-	return status;
+	restore(mask);
+	return OK;
 }

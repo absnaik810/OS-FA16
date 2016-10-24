@@ -1,14 +1,13 @@
-/* Used for allocating the memory */
-
-#include<future.h>
 #include<xinu.h>
+#include<future.h>
 
-future* future_alloc(int future_flags) {
-
-	future* fut = (future*)getmem(sizeof(*fut));
+future *future_alloc(int fut_flag) {
+	intmask mask;
+	mask = disable();
 	
-	fut->flag=future_flags;
-	fut->state=FUTURE_EMPTY;
-
+	future *fut = (future *)getmem(sizeof(future));	
+	fut->flag = fut_flag;
+	fut->state = FUTURE_EMPTY;
+	restore(mask);
 	return fut;
 }
