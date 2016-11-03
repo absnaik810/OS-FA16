@@ -3,6 +3,6 @@
 
 syscall future_free(future* fut) {	
 	freemem(fut, sizeof(fut));
-	printf("Memory for future is released \n");
+	printf("Memory for future is released \n"); 
 	return OK;
-}
+} 

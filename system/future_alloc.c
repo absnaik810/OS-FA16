@@ -9,4 +9,4 @@ future* future_alloc(int future_flags) {
 	fut->state = FUTURE_EMPTY;
 
 	return fut;
-}
+}  

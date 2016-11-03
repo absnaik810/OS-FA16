@@ -16,7 +16,7 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 	f2 = future_alloc(FUTURE_EXCLUSIVE);
 	f3 = future_alloc(FUTURE_EXCLUSIVE);
 	  
-	if(nargs>2) {
+	if(nargs>2) { 
 		fprintf(stderr, "%s: Many arguments entered.  Please enter correct number of arguments. \n", args[0]);
 		return 0;
 	}
@@ -42,7 +42,7 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 	}
 	else
 	{
-		fprintf(stderr,"Less number of arguments entered, so please enter prodcons followed by -f", args[0]);
+		fprintf(stderr,"Less number of arguments entered, so please enter prodcons followed by -f", args[0]); 
 	}
 	return 0;
 }

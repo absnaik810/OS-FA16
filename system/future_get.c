@@ -19,5 +19,5 @@ syscall future_get(future *fut, int *value) {
 	} else {
 			return SYSERR;
 	}
-}
+} 
 }
