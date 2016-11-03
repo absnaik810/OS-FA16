@@ -1,19 +1,23 @@
-/* Used for implementing the future_get() function*/
-
-#include<future.h>
 #include<xinu.h>
+#include<future.h>
+#include<stdio.h>
 
-syscall future_get(future* fut, int* value) {
-	if(fut->state==FUTURE_EMPTY){
-		fut->pid=getpid();
-		fut->state=FUTURE_WAITING;
-		suspend(fut->pid);
-		*value=*(fut->value);
-		return OK;
-	}
-	else {
-		if(fut->state==FUTURE_WAITING) {
+syscall future_get(future *fut, int *value) {
+	if(fut->flag==FUTURE_EXCLUSIVE) {
+		if(fut->state == FUTURE_EMPTY) {
+			fut->state = FUTURE_WAITING;
+			fut->pid = getpid();
+			suspend(fut->pid);
+
+			return OK;		
+		} else if(fut->state == FUTURE_VALID) {		
+			*value = *(fut->value);
+			resume(fut->pid);
+			fut->state = FUTURE_EMPTY;
+
+			return OK;
+	} else {
 			return SYSERR;
-		}
 	}
-}	
+}
+}

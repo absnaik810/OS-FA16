@@ -1,12 +1,8 @@
-/* Used for freeing */
-#include<future.h>
 #include<xinu.h>
+#include<future.h>
 
-syscall future_free (future* fut) {
-	syscall status;
-	
-	if(fut->flag==FUTURE_EXCLUSIVE)
-		status=freemem((char*) fut, sizeof(*fut));
-
-	return status;
+syscall future_free(future* fut) {	
+	freemem(fut, sizeof(fut));
+	printf("Memory for future is released \n");
+	return OK;
 }

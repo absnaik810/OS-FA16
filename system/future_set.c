@@ -1,20 +1,17 @@
-/* Used for implementing the future_set() function */
-
-#include<future.h>
 #include<xinu.h>
+#include<future.h>
 
-syscall future_set(future* fut, int* value) {
-	if(fut->state==FUTURE_EMPTY) {
-		fut->value=value;
-		fut->state=FUTURE_VALID;
-		return OK;
-	}
-	else {
-		if(fut->state==FUTURE_VALID) {
+syscall future_set(future *fut, int *value) {
+if(fut->flag==FUTURE_EXCLUSIVE) {	
+	if(fut->state == FUTURE_WAITING || fut->state == FUTURE_EMPTY) {	
+			fut->state = FUTURE_VALID;
+			fut->value = *value;
+			resume(fut->pid);
+
+			return OK;
+		} else  {			
+
 			return SYSERR;
-	        }
-		else {
-			resume(fut->pid);	
-		}
+		} 
 	}
 }
