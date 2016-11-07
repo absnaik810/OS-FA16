@@ -8,6 +8,7 @@ uint32 future_cons(future *fut) {
     		printf("future_get failed\n");
 		return -1;
 	}
-	printf("it consumed %d\n", i);
+	printf("it consumed: %u\n", i);
+	//future_free(fut);
 	return OK;
 }

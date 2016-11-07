@@ -7,7 +7,7 @@ uint32 future_prod(future *fut) {
 	for (i=0; i<1000; i++) {
 		j += i;
 	}
-	//printf("It produced: %d\n", j);
+	printf("It produced: %u\n", j);
 	future_set(fut, &j);
 	return OK;
 }

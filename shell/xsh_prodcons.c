@@ -45,5 +45,6 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 	  resume( create(future_prod, 1024, 20, "fprod4", 1, f_queue) );
  	  resume( create(future_prod, 1024, 20, "fprod5", 1, f_queue) );
  	  resume( create(future_prod, 1024, 20, "fprod6", 1, f_queue) );
+	 sleep(5000);
 	}
 }
