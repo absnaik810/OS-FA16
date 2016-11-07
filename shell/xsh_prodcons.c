@@ -4,8 +4,7 @@
 #include <stdio.h>
 #include <prodcons.h>
 
-int n;                 
-sid32 produced,consumed;
+int n;
 
 uint future_prod(future* fut);
 uint future_cons(future* fut);

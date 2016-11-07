@@ -2,7 +2,7 @@
 #include<future.h>
 
 syscall future_free(future* fut) {	
+	//code to free the memory
 	freemem(fut, sizeof(fut));
-	printf("Memory for future is released \n"); 
 	return OK;
 } 
