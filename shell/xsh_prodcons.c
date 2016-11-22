@@ -21,13 +21,13 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 	if(nargs==2 && strcmp(args[1],"-f")==0){
 	  future *f_exclusive, *f_shared, *f_queue;
  
-          f_exclusive = future_alloc(FUTURE_EXCLUSIVE);
+          //f_exclusive = future_alloc(FUTURE_EXCLUSIVE);
 	  f_shared = future_alloc(FUTURE_SHARED);
-  	  f_queue = future_alloc(FUTURE_QUEUE);
+  	  //f_queue = future_alloc(FUTURE_QUEUE);
  
 	  // Test FUTURE_EXCLUSIVE
-	  resume( create(future_cons, 1024, 20, "fcons1", 1, f_exclusive) );
- 	  resume( create(future_prod, 1024, 20, "fprod1", 1, f_exclusive) );
+	  //resume( create(future_cons, 1024, 20, "fcons1", 1, f_exclusive) );
+ 	  //resume( create(future_prod, 1024, 20, "fprod1", 1, f_exclusive) );
 
 	  // Test FUTURE_SHARED
 	  resume( create(future_cons, 1024, 20, "fcons2", 1, f_shared) );
@@ -37,14 +37,13 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 	  resume( create(future_prod, 1024, 20, "fprod2", 1, f_shared) );
 
  	  // Test FUTURE_QUEUE
-  	  resume( create(future_cons, 1024, 20, "fcons6", 1, f_queue) );
-	  resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
- 	  resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
-	  resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
-	  resume( create(future_prod, 1024, 20, "fprod3", 1, f_queue) );
-	  resume( create(future_prod, 1024, 20, "fprod4", 1, f_queue) );
- 	  resume( create(future_prod, 1024, 20, "fprod5", 1, f_queue) );
- 	  resume( create(future_prod, 1024, 20, "fprod6", 1, f_queue) );
-	 sleep(5000);
+  	  //resume( create(future_cons, 1024, 20, "fcons6", 1, f_queue) );
+	  //resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
+ 	  //resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
+	  //resume( create(future_cons, 1024, 20, "fcons7", 1, f_queue) );
+	  //resume( create(future_prod, 1024, 20, "fprod3", 1, f_queue) );
+	  //resume( create(future_prod, 1024, 20, "fprod4", 1, f_queue) );
+ 	  //resume( create(future_prod, 1024, 20, "fprod5", 1, f_queue) );
+ 	  //resume( create(future_prod, 1024, 20, "fprod6", 1, f_queue) );
 	}
 }

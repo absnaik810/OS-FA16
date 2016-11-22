@@ -9,6 +9,6 @@ uint32 future_cons(future *fut) {
 		return -1;
 	}
 	printf("it consumed: %u\n", i);
-	//future_free(fut);
+	future_free(fut);
 	return OK;
 }

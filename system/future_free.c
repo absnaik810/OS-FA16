@@ -7,13 +7,13 @@ syscall	future_free(future *fut) {
 
 	if(fut->flag==FUTURE_EXCLUSIVE) {
 	freemem(fut, sizeof(future));
-	kprintf("Released the memory for exclusive\n");
+	//kprintf("Released the memory for exclusive\n");
 	}
 
 	if(fut->flag==FUTURE_SHARED) {
 		if(isQueueEmpty(fut->get_head, fut->get_tail)){
 			freemem(fut, sizeof(future));
-			kprintf("Released the memory for shared\n");
+			//kprintf("Released the memory for shared\n");
 		}
 	}
 
