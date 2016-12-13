@@ -9,35 +9,36 @@
 /************************************************************************/
 const	struct	cmdent	cmdtab[] = {
 	{"argecho",	TRUE,	xsh_argecho},
+	{"arp",		FALSE,	xsh_arp},
+	{"arptest",	FALSE,	xsh_arp_test},
+	{"avail_mem",	FALSE,	xsh_avail_mem},
 	{"cat",		FALSE,	xsh_cat},
 	{"clear",	TRUE,	xsh_clear},
 	{"date",	FALSE,	xsh_date},
 	{"devdump",	FALSE,	xsh_devdump},
 	{"echo",	FALSE,	xsh_echo},
 	{"exit",	TRUE,	xsh_exit},
+	{"hello",	FALSE,	xsh_hello},
 	{"help",	FALSE,	xsh_help},
+	{"ipaddr",	FALSE,	xsh_ipaddr},
 	{"kill",	TRUE,	xsh_kill},
+	{"max_stack",	FALSE,	xsh_max_stack},
 	{"memdump",	FALSE,	xsh_memdump},
 	{"memstat",	FALSE,	xsh_memstat},
-	{"ps",		FALSE,	xsh_ps},
-	{"sleep",	FALSE,	xsh_sleep},
-	{"uptime",	FALSE,	xsh_uptime},
-	{"?",		FALSE,	xsh_help},
-	{"test_mmu", 	FALSE, 	xsh_mmu},
-	{"hello",	FALSE,  xsh_hello},
-	{"prodcons", FALSE, xsh_prodcons},
-#ifdef ARM_BBB
-	{"arp",		FALSE,	xsh_arp},
-	{"ipaddr",	FALSE,	xsh_ipaddr},
+	{"per_mem",	FALSE,	xsh_per_mem},
 	{"ping",	FALSE,	xsh_ping},
+        {"prodcons",	FALSE,	xsh_prodcons},
+	{"ps",		FALSE,	xsh_ps},
+	{"reset",	FALSE,	xsh_reset},
+	{"sleep",	FALSE,	xsh_sleep},
+//	{"synprodcons",	FALSE,	xsh_synprodcons},
 	{"udp",		FALSE,	xsh_udpdump},
 	{"udpecho",	FALSE,	xsh_udpecho},
 	{"udpeserver",	FALSE,	xsh_udpeserver},
-#endif
-#ifdef MMU
-	{"test_mmu", 	FALSE, 	xsh_mmu},
-#endif
-  {"?",		FALSE,	xsh_help}
+	{"udprequest",  FALSE,  xsh_udp_request},
+	{"uptime",	FALSE,	xsh_uptime},
+	{"?",		FALSE,	xsh_help}
+
 };
 
 uint32	ncmd = sizeof(cmdtab) / sizeof(struct cmdent);
@@ -95,7 +96,7 @@ process	shell (
 	char	*args[SHELL_MAXTOK];	/* Argument vector passed to	*/
 					/*   builtin commands		*/
 
-	/* Print shell banner and startup message */
+	/* Print shell banner and startup msg */
 
 	fprintf(dev, "\n\n%s%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
 		SHELL_BAN0,SHELL_BAN1,SHELL_BAN2,SHELL_BAN3,SHELL_BAN4,
